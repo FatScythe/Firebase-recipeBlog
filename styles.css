@@ -1,5 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 * {
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    list-style: none;
+}
+
+article {
+    display: none;
+}
+
+.chevron {
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.chevron-up {
+    transform: rotate(180deg);
+}
+
+.chevron-down {
+    transform: rotate(180deg);
+}
+
+.active, .chevron:hover {
+    background-color: #ccc;
 }
