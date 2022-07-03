@@ -32,7 +32,9 @@
                                 Non reiciendis blanditiis vero est odio error officiis obcaecati impedit quas.
                             </p>
                         </div>
+                        <button class="btn btn-danger">delete</button>
                     </article>
+                    
 
                 </li>
                 <br>
@@ -50,6 +52,7 @@
                                 Non reiciendis blanditiis vero est odio error officiis obcaecati impedit quas.
                             </p>
                         </div>
+                        <button class="btn btn-danger">delete</button>
                     </article>
 
                 </li>
@@ -67,10 +70,14 @@
             <form>
                 <label for="title">Title</label><br>
                 <input type="text" name="title"><br><br>
+                <p class="error-title text-danger small"></p>
                 <label for="author">Author</label><br>
                 <input type="text" name="author"><br><br>
+                <p class="error-author text-danger small"></p>
                 <label>Content:</label><br>
                 <textarea rows="5" cols="25" name="content"></textarea><br><br>
+                <p class="error-content text-danger small"></p><br>
+                <p class="error-form text-danger small"></p>
                 <button class="btn btn-primary mx-auto" type="submit">Add</button>
                 <button class="unsub btn btn-danger mx-auto">Unsub</button>
             </form>
@@ -79,40 +86,65 @@
     </main>
     
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+    const Config = {
+        apiKey: "AIzaSyA7hfT1cQ2DRlbtTWuD6LBVKb-c2_XRK5E",
+        authDomain: "recipes-f2356.firebaseapp.com",
+        projectId: "recipes-f2356",
+        storageBucket: "recipes-f2356.appspot.com",
+        messagingSenderId: "986807720183",
+        appId: "1:986807720183:web:3dd29f10812fc5c1ad5bf2"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(Config);
 
 
+    // Initialize Cloud Firestore and get a reference to the service
+    const db = firebase.firestore();
+    
 
+    // db.collection('recipes').get().then((doc) => {
+    // if (doc.exists) {
+    //     console.log("Document data:", doc.data());
+    // } else {
+    //     // doc.data() will be undefined in this case
+    //     console.log("No such document!");
+    // }
+    // }).catch((error) => {
+    //     console.log("Error getting document:", error);
+    // });
+    
+    // add data
+    // db.collection("recipes").add({
+    //     first: "Ada",
+    //     last: "Lovelace",
+    //     born: 1815
+    // })
+    // .then((docRef) => {
+    //     console.log("Document written with ID: ", docRef.id);
+    // })
+    // .catch((error) => {
+    //     console.error("Error adding document: ", error);
+    // });
 
+    var docRef = db.collection("recipes").doc("SF");
 
+    docRef.get().then((doc) => {
+        if (doc.exists) {
+            console.log("Document data:", doc.data());
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
 
-
-
-
-    <!-- <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyBBgFgV5bxIki9x_av-Ii5lRDLcJQB31bY",
-          authDomain: "fir-34b93.firebaseapp.com",
-          projectId: "fir-34b93",
-          storageBucket: "fir-34b93.appspot.com",
-          messagingSenderId: "626888633356",
-          appId: "1:626888633356:web:b44949d5a0871f8e3d9229",
-          measurementId: "G-HR0BY1V2TF"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-
-        // const recipeDB = app.firestore();
-      </script> -->
+    </script>
     <script src="app.js"></script>
 </body>
 </html>
