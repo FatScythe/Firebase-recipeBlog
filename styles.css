@@ -27,3 +27,21 @@ article {
 .active, .chevron:hover {
     background-color: #ccc;
 }
+
+li h3 {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+li h3 span {
+    margin: 5px;
+}
+
+form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+form input, textarea {
+    width: 100%;
+}
