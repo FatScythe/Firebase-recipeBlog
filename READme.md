@@ -46,12 +46,8 @@ console.error("Error adding document: ", error);
 
 
 >#### Design image : The desgn was gotten from a screenshot of my phone to-do app
-![Todo SS](asset/SS2.jpg "Design")
-
-> #### Desktop View
-![ SS](asset/Taskapp.png "Desktop View")
-
+![Recipe Blog SS](SS.png "Design")
 
 > #### Credits: 
-NetNinja
-Scythe
+##### NetNinja
+##### Scythe

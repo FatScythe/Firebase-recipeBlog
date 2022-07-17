@@ -4,7 +4,7 @@ const addBlogBtn = document.querySelector('.add');
 const form = document.querySelector('form');
 const list = document.querySelector('ul');
 const submit = document.querySelector('.submit');
-
+// const unsubBtn = document.querySelector('.unsub');
 
 addBlogBtn.addEventListener('click', function () {
     let formContainer = this.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling; 
@@ -101,7 +101,7 @@ const addBlog = (recipes) => {
 }
 
 // Getting Collections
-db.collection("recipes").get().then((querySnapshot) => {
+const unsub = db.collection("recipes").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         const recipes = doc;
         addBlog(recipes);
@@ -128,7 +128,9 @@ db.collection("recipes").get().then((querySnapshot) => {
 
         // Deleting each blog item
         const delBtn = list.childNodes[3].childNodes[7];
+
         delBtn.addEventListener('click', (e) => {
+
             const id = delBtn.parentElement.parentElement.getAttribute('data-id');
 
             // Deleting Data
@@ -138,6 +140,7 @@ db.collection("recipes").get().then((querySnapshot) => {
             }).catch((error) => {
                 console.error("Error removing document: ", error);
             });
+
             
         })
     });
@@ -159,8 +162,6 @@ submit.addEventListener('click', (e) => {
                 created_at: firebase.firestore.Timestamp.fromDate(now),
                 title: form.title.value
             }
-
-        console.log(inputData, 'demo');
 
         // Adding data
         db.collection("recipes").add(inputData)

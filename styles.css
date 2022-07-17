@@ -37,6 +37,10 @@ li h3 span {
     margin: 5px;
 }
 
+.add {
+    cursor: pointer;
+}
+
 form {
     width: 80%;
     margin: 0 auto;
