@@ -81,9 +81,9 @@ const addBlog = (recipes) => {
     let time = recipes.data().created_at.toDate();
     let html = `
                         <li class = "panel" data-id ="${recipes.id}">
-                        <h3 class="title bg-primary text-light p-4 d-flex justify-content-between">${recipes.data().title}<span class="chevron material-symbols-outlined text-light bg-dark m-1 rounded-circle" title="Read-more">
+                        <p class="title bg-primary text-light p-4 d-flex justify-content-between">${recipes.data().title}<span class="chevron material-symbols-outlined text-light bg-dark m-1 rounded-circle" title="Read-more">
                             expand_more
-                            </span></h3>
+                            </span></p>
                         
                         <article class = "my-4">
                             <div class="author bg-success p-3 text-light">Written by:  ${recipes.data().author}</div>
@@ -101,7 +101,7 @@ const addBlog = (recipes) => {
 }
 
 // Getting Collections
-const unsub = db.collection("recipes").get().then((querySnapshot) => {
+db.collection("recipes").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         const recipes = doc;
         addBlog(recipes);
